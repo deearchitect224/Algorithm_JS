@@ -8,15 +8,15 @@
 Write a function `fib(n)` that takes an number as an argument and returns the n-th number of the Fibonacci sequence
 
 **What is Fibonacci sequence?**
-: The 1st and 2nd number of sequence is 1. To generate the next number of the sequence, we sum the previous 2.
+>The 1st and 2nd number of sequence is 1. To generate the next number of the sequence, we sum the previous 2.
 fib(n): 1, 1, 2, 3, 5, 8, 13, 21, 34...
 n	    : 1, 2, 3, 4, 5, 6, 7, 8, 9, 10...
 
 **What is Recursion?**
-: For running repeated code blocks, recursion is a very straightforward and an unintelligent way to do so i.e. it does not remember if that particular computation was already done.
+>For running repeated code blocks, recursion is a very straightforward and an unintelligent way to do so i.e. it does not remember if that particular computation was already done.
 
 **What is the intuition behind Memoization?**
-: The intuition behind memoization is that we use a memo to keep track of previous computations. In certain recursion scenarios, the previously computed values can help save time if cached in memory and reused.
+>The intuition behind memoization is that we use a memo to keep track of previous computations. In certain recursion scenarios, the previously computed values can help save time if cached in memory and reused.
 
 | Implementation | Time Complexity | Space Complexity |
 | ----------- | ----------- | ----------- |
@@ -26,6 +26,9 @@ n	    : 1, 2, 3, 4, 5, 6, 7, 8, 9, 10...
 - **Grid Traveler**
 
 Write a function `gridtraveler(m,n)` that takes m,n as arguments denoting the mxn grid. It returns the number of moves needed to go from left-top to right-bottom cell.
+
+**What is Grid traveler?**
+>Imagine you have a 2x2 grid and the starting position is 2,2. The goal is to get to 1,1. In order to go from Start to End cell, you will need to move Right,Down or Down,Right. The same problem can be extended to mxn grid. Note that when you are traversing a mxn grid you will have an identical set of moves to reach the goal as in nxm grid. 
 
 | Implementation | Time Complexity | Space Complexity |
 | ----------- | ----------- | ----------- |
