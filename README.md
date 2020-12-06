@@ -33,8 +33,8 @@ Write a function `gridtraveler(m,n)` that takes m,n as arguments denoting the mx
 | Implementation | Time Complexity | Space Complexity |
 | ----------- | ----------- | ----------- |
 | Recursion | O(2<sup>m+n</sup>) | O(m+n) |
-| Memoization | O(m+n) | O(m+n) |
+| Memoization | O(m\*n) | O(m+n) |
 
 
-
+Many thanks to [FreeCodeCamp.org](https://www.youtube.com/watch?v=oBt53YbR9Kk)
 
