@@ -17,8 +17,10 @@ Write a function `fib(n)` that takes an number as an argument and returns the n<
 
 **What is Fibonacci sequence look like in the tree structure?**
 >The 1st and 2nd number of sequence is 1. To generate the next number of the sequence, we sum the previous 2.
+
 fib(n): 1, 1, 2, 3, 5, 8, 13, 21, 34...
-n	    : 1, 2, 3, 4, 5, 6, 7, 8, 9, 10...
+n	  : 1, 2, 3, 4, 5, 6, 7, 8, 9, 10...
+
 Take the index n as the root node. At any given time, the height of the tree is a maximum of n because you have to keep advancing towards the index 0. The number of branches at any node is a maximum of 2 because we can only add the previous 2 numbers. The time complexity is the total number of nodes in the tree which is 2<sup>n</sup>. The space complexity is the height of the tree which is n.
 
 | Implementation | Time Complexity | Space Complexity |
