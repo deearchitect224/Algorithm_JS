@@ -99,7 +99,7 @@ Here - when we start thinking about the solution, we can see that - the shorter 
 **What does canCosntruct look like in the tree structure?**
 Imagine that we are starting off with the target string as our root node. Our goal is to keep removing the strings found in the wordBank until we are left with the base case of empty string. If we follow that path and hit the base case, then that means - the wordBank allows the creation of the target string. 
 
-<span style="color:red">*CAUTION*:</span>
+<span style="color:red">***CAUTION***:</span>
 When you are traversing the tree branching using the wodBank strings, DO NOT remove the strings from the middle of the target. If you do, then you will end up creating new adjacencies that are not correct based on the given target string. So take caution to NOT fall in this trap. 
 
 **Alvin's Memoization Recipe**
