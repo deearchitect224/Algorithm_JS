@@ -90,6 +90,18 @@ In this series of problems, this third flavor targets on answering the question:
 | Recursion | O(n<sup>m</sup> \* m) | O(m<sup>2</sup>) |
 | Memoization | O(n\*m<sup>2</sup>) | O(m<sup>2</sup>) |
 
+- **Can-Construct Problem**
+
+Write a function `canConstruct(target, wordBank)` that accepts a target string and an array of strings. It should return a boolean indicating whether or not the target can be constructed the elements of the `wordBank` array. You may reuse elements of the `wordBank` array as many times as needed. 
+
+Here - when we start thinking about the solution, we can see that - the shorter the target string, the easier it is to solve. For e.g. if the target string is an empty string, then the answer must always be true. This could be one of our base case(s). 
+
+**What does canCosntruct look like in the tree structure?**
+Imagine that we are starting off with the target string as our root node. Our goal is to keep removing the strings found in the wordBank until we are left with the base case of empty string. If we follow that path and hit the base case, then that means - the wordBank allows the creation of the target string. 
+
+<span style="color:red">*CAUTION*:</span>
+When you are traversing the tree branching using the wodBank strings, DO NOT remove the strings from the middle of the target. If you do, then you will end up creating new adjacencies that are not correct based on the given target string. So take caution to NOT fall in this trap. 
+
 **Alvin's Memoization Recipe**
 Always follow the below steps. Do not try to jump to the all correct and efficient solution at the outset. First implement a code with brute-force that correctly solves the problem. Then you can apply the efficiency aspect to it. 
 
