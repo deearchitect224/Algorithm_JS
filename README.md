@@ -96,11 +96,66 @@ Write a function `canConstruct(target, wordBank)` that accepts a target string a
 
 Here - when we start thinking about the solution, we can see that - the shorter the target string, the easier it is to solve. For e.g. if the target string is an empty string, then the answer must always be true. This could be one of our base case(s). 
 
-**What does canCosntruct look like in the tree structure?**
+**What does canConstruct look like in the tree structure?**
 Imagine that we are starting off with the target string as our root node. Our goal is to keep removing the strings found in the wordBank until we are left with the base case of empty string. If we follow that path and hit the base case, then that means - the wordBank allows the creation of the target string. 
 
-<span style="color:red">***CAUTION***:</span>
+<span style="color:red">*CAUTION*:</span>
 When you are traversing the tree branching using the wodBank strings, DO NOT remove the strings from the middle of the target. If you do, then you will end up creating new adjacencies that are not correct based on the given target string. So take caution to NOT fall in this trap. 
+
+The logic we want to follow is - only branch to child when you find a "Matching Prefix" in the wordBank. This will allow you to only look for valid contiguous set of characters. 
+
+***Consider the complexity analysis of Recursion***
+>m = target.length
+>n = wordBank.length
+>height of the tree will be utmost = m
+>branching factor of the tree will be related to the number of words in the wordBank i.e. = n
+>**The time complexity**  of traversing the tree by brute force would be (branching factor<sup>height</sup>) i.e. O(n<sup>m</sup>)
+>This is because for each node (target or suffix), assume you have n matching prefixes, then every level of the tree we will have to keep multiplying by n until we reach the leaf node. 
+>Additionally you will need to consider the "slicing" operation. This will act on the target string. So every iteration you will need to perform m operations. Therefore time complexity further becomes O(n<sup>m</sup> \* m)
+>**The space complexity** is really the height of this tree i.e. O(m). We also need to make sure if we have any other growing structure. The slice returns a new string in every iteration. Therefore the space complexity becomes O(m<sup>2</sup>).
+
+***Consider the complexity analysis after Memoization***
+>When we memoize, we do not have to traverse the entire subtrees. Whenever we encounter the subtree, we can just short circuit and fetch from the memo object. So, at the cost of adding an additional m size data structure, we go from an exponential time complexity to a polynomial. Remember that we still had an m factor due to slicing and that still holds good. So the **time complexity after memoization** now becomes O(n \* m<sup>2</sup>)
+>The **space complexity after memoization** still remains polynomial i.e. O(m<sup>2</sup>).
+
+| Implementation | Time Complexity | Space Complexity |
+| ----------- | ----------- | ----------- |
+| Recursion | O(n<sup>m</sup> \* m) | O(m<sup>2</sup>) |
+| Memoization | O(n\*m<sup>2</sup>) | O(m<sup>2</sup>) |
+
+- **Count-Construct Problem**
+
+Write a function `countConstruct(target, wordBank)` that accepts a target string and an array of strings. It should return the `total number of ways`  that the target can be constructed by concatenating the elements of the `wordBank` array. You may reuse elements of the `wordBank` array as many times as needed. 
+
+Here - we cannot do an early return anymore as soon as we find a way to form the target string, but we have to actually count the number of ways it can be done using the words in the wordBank. We can visualize the logic slightly differently - i.e. instead of returning true / false at the base case(s), we can return the count. For e.g. in the base case where the suffix can no more be broken down, we can return a zero. For the base case of empty string, we need to return a 1. We can visualize then bubbling up these values and adding them up at the parent. 	
+
+**What does countConstruct look like in the tree structure?**
+Imagine that we are starting off with the target string as our root node. Our goal is to keep removing the strings found in the wordBank until we are left with the base case of empty string. If we follow that path and hit the base case, then that means - the wordBank allows the creation of the target string. 
+
+<span style="color:red">*CAUTION*:</span>
+When you are traversing the tree branching using the wodBank strings, DO NOT remove the strings from the middle of the target. If you do, then you will end up creating new adjacencies that are not correct based on the given target string. So take caution to NOT fall in this trap. 
+
+The logic we want to follow is - only branch to child when you find a "Matching Prefix" in the wordBank. This will allow you to only look for valid contiguous set of characters. 
+
+***Consider the complexity analysis of Recursion***
+>m = target.length
+>n = wordBank.length
+>height of the tree will be utmost = m
+>branching factor of the tree will be related to the number of words in the wordBank i.e. = n
+>**The time complexity**  of traversing the tree by brute force would be (branching factor<sup>height</sup>) i.e. O(n<sup>m</sup>)
+>This is because for each node (target or suffix), assume you have n matching prefixes, then every level of the tree we will have to keep multiplying by n until we reach the leaf node. 
+>Additionally you will need to consider the "slicing" operation. This will act on the target string. So every iteration you will need to perform m operations. Therefore time complexity further becomes O(n<sup>m</sup> \* m)
+>**The space complexity** is really the height of this tree i.e. O(m). We also need to make sure if we have any other growing structure. The slice returns a new string in every iteration. Therefore the space complexity becomes O(m<sup>2</sup>).
+
+***Consider the complexity analysis after Memoization***
+>When we memoize, we do not have to traverse the entire subtrees. Whenever we encounter the subtree, we can just short circuit and fetch from the memo object. So, at the cost of adding an additional m size data structure, we go from an exponential time complexity to a polynomial. Remember that we still had an m factor due to slicing and that still holds good. So the **time complexity after memoization** now becomes O(n \* m<sup>2</sup>)
+>The **space complexity after memoization** still remains polynomial i.e. O(m<sup>2</sup>).
+
+| Implementation | Time Complexity | Space Complexity |
+| ----------- | ----------- | ----------- |
+| Recursion | O(n<sup>m</sup> \* m) | O(m<sup>2</sup>) |
+| Memoization | O(n\*m<sup>2</sup>) | O(m<sup>2</sup>) |
+
 
 **Alvin's Memoization Recipe**
 Always follow the below steps. Do not try to jump to the all correct and efficient solution at the outset. First implement a code with brute-force that correctly solves the problem. Then you can apply the efficiency aspect to it. 
